@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  title: MyString
+  estimate: 1
+  position: 1
+  type: MyString
+  project_id: 1
+  product_backlog_item_id: 1
+two:
+  id: 2
+  title: MyString
+  estimate: 1
+  position: 1
+  type: MyString
+  project_id: 1
+  product_backlog_item_id: 1

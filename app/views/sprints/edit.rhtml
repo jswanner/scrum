@@ -1,0 +1,27 @@
+<h1>Editing sprint</h1>
+
+<%= error_messages_for :sprint %>
+
+<% form_for(:sprint, :url => sprint_path(@sprint), :html => { :method => :put }) do |f| %>
+  <p>
+    <b>Number</b><br />
+    <%= f.text_field :number %>
+  </p>
+
+  <p>
+    <b>Start on</b><br />
+    <%= f.date_select :start_on %>
+  </p>
+
+  <p>
+    <b>End on</b><br />
+    <%= f.date_select :end_on %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', sprint_path(@sprint) %> |
+<%= link_to 'Back', sprints_path %>

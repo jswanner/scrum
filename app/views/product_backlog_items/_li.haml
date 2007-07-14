@@ -1,0 +1,28 @@
+/list item for pbi
+%li[li]
+
+  /div containing pbi information, and link to delete
+  %div
+    %span.position= li.position
+    %span.title= li.title
+    .delete= link_to_remote_redbox 'x', :url => delete_product_backlog_item_path(sprint, project, li), :method => 'get', :complete => "$('delete_sbi').focus();"
+    %span.estimate= li.estimate
+    
+  /break w/ clear, so the link will appear below the pbi box
+  %br.clear/
+  
+  /heading containing sbi count
+  %h5{:style => 'display: inline;'}
+    = "#{li.sprint_backlog_items.count} Sprint Backlog Items"
+  
+  /link to add new sbi, form is retrieved by ajax and put in modal box
+  = link_to_remote_redbox '+', :url => new_sprint_backlog_item_path(sprint, project, li), :method => 'get', :success => "$('sprint_backlog_item_title').focus();"
+  
+  -# only display sbi list if the pbi has sbi's
+  - if li.sprint_backlog_items.count > 0
+    
+    /list of sprint backlog items
+    %ol.sprint_backlog_items{:id => "sbis_for_#{li.id}"}
+      = render :partial => 'sprint_backlog_items/li', :collection => li.sprint_backlog_items, :locals => { :sprint => sprint, :project => project, :pbi => li }
+      
+    = sortable_element("sbis_for_#{li.id}", :url => order_product_backlog_item_path(sprint, project, li), :method => :get, :overlap => :horizontal, :constraint => :horizontal)

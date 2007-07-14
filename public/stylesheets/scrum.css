@@ -1,0 +1,179 @@
+body {
+  background-color: #eee;
+  
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: small; }
+
+a {
+  background-color: transparent;
+  
+  border: 1px solid #777;
+  color: #777;
+  font-size: .8em;
+  font-weight: bold;
+  
+  padding: 0 .2em .1em .2em;
+  text-decoration: none; }
+  a:hover {
+    background-color: #999;
+    
+    border-color: #333;
+    
+    color: #333; }
+
+br.clear {
+  clear: both; }
+
+ol.product_backlog_items {
+  list-style: none;
+  margin: 0;
+  padding: 1em;
+  width: auto; }
+  ol.product_backlog_items li {
+    clear: both;
+    padding: 1em .2em; }
+    ol.product_backlog_items li div {
+      background-color: #C4FFCE;
+      
+      border: 1px solid #0f0;
+      float: left;
+      margin-bottom: .3em;
+      
+      min-width: 15em;
+      
+      padding: .1em; }
+      ol.product_backlog_items li div span.position {
+        clear: none;
+        display: block;
+        position: relative;
+        right: 1.7em;
+        color: #999;
+        font-weight: bold;
+        font-size: medium;
+        
+        text-align: right;
+        
+        width: 1.5em; }
+      ol.product_backlog_items li div span.title {
+        clear: both;
+        display: block;
+        font-size: 1.2em;
+        
+        min-height: 2em;
+        
+        padding: 0 .1em;
+        position: relative;
+        bottom: 1em; }
+      ol.product_backlog_items li div div.delete {
+        border-style: none;
+        
+        float: left;
+        min-width: 0;
+        
+        padding: 0;
+        position: relative;
+        right: .15em;
+        top: .5em; }
+      ol.product_backlog_items li div span.estimate {
+        display: block;
+        padding-right: .2em;
+        
+        text-align: right; }
+
+ol.sprint_backlog_items {
+  clear: both;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 1em; }
+  ol.sprint_backlog_items li {
+    background-color: #F6FFCC;
+    
+    border: 1px solid #ff0;
+    clear: none;
+    float: left;
+    margin: .4em 1em;
+    max-width: 16em;
+    
+    min-width: 8em;
+    
+    padding: .2em; }
+    ol.sprint_backlog_items li span.position {
+      clear: none;
+      display: block;
+      color: #999;
+      font-weight: bold;
+      font-size: medium;
+      
+      position: relative;
+      right: 1.8em;
+      text-align: right;
+      
+      width: 1.5em; }
+    ol.sprint_backlog_items li span.title {
+      bottom: 1em;
+      clear: both;
+      display: block;
+      font-size: 1.1em;
+      
+      min-height: 3em;
+      
+      position: relative; }
+    ol.sprint_backlog_items li div.delete {
+      background-color: #F6FFCC;
+      
+      border-style: none;
+      
+      float: left;
+      min-width: 0;
+      
+      padding: 0;
+      position: relative;
+      right: .27em;
+      top: .7em; }
+    ol.sprint_backlog_items li span.estimate {
+      display: block;
+      padding-right: .2em;
+      
+      text-align: right; }
+
+#RB_window {
+  border: 1px solid #333;
+  padding: 0 1em 1em 1em; }
+  #RB_window h1 {
+    border-bottom: 1px dotted #333; }
+  #RB_window form {
+    font-size: 1.1em;
+    
+    padding: 0 1em; }
+    #RB_window form input {
+      font-size: 1.2em; }
+
+.fieldWithErrors {
+  background-color: red;
+  display: table;
+  padding: 2px; }
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff; }
+  #errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px; }
+  #errorExplanation ul li {
+    font-size: 12px;
+    
+    list-style: square; }

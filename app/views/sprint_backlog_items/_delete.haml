@@ -1,0 +1,7 @@
+%h1 Delete Sprint Backlog Item
+= error_messages_for :sprint_backlog_item
+- remote_form_for(:sprint_backlog_item, :url => sprint_backlog_item_path(sprint, project, pbi, @sprint_backlog_item), :method => :delete) do |f|
+  = "Are you sure you want to delete: #{sprint_backlog_item.title} ?"
+  %br/
+  = submit_tag 'Yes', :id => 'delete_sbi'
+  = button_to_close_redbox 'No'

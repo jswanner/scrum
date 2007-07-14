@@ -1,0 +1,11 @@
+page << "RedBox.close();"
+page.replace_html 'pbis',
+                  :partial => 'li',
+                  :collection => @pbis,
+                  :locals => {  :sprint => @sprint,
+                                :project => @project }
+page.sortable("pbis",
+              :url => order_project_path(@sprint, @project),
+              :method => :get,
+              :overlap => :horizontal,
+              :constraint => :horizontal)

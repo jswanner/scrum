@@ -1,0 +1,8 @@
+%h1 Sprints
+= link_to 'add sprint', new_sprint_path
+%br/
+- @sprints.each do |sprint|
+  %h3{:style => 'display: inline'}= '#' + sprint.number.to_s
+  ="#{sprint.projects.count} projects"
+  = link_to 'show', sprint_path(sprint)
+  = link_to 'edit', edit_sprint_path(sprint)

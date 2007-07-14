@@ -1,0 +1,18 @@
+<p>
+  <b>Number:</b>
+  <%=h @sprint.number %>
+</p>
+
+<p>
+  <b>Start on:</b>
+  <%=h @sprint.start_on %>
+</p>
+
+<p>
+  <b>End on:</b>
+  <%=h @sprint.end_on %>
+</p>
+
+
+<%= link_to 'Edit', edit_sprint_path(@sprint) %> |
+<%= link_to 'Back', sprints_path %>

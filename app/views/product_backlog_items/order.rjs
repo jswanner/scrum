@@ -1,0 +1,11 @@
+page.replace_html "sbis_for_#{@pbi.id}",
+                  :partial => 'sprint_backlog_items/li',
+                  :collection => @sbis,
+                  :locals => {  :sprint => @sprint,
+                                :project => @project,
+                                :pbi => @pbi }
+page.sortable("sbis_for_#{@pbi.id}",
+              :url => order_product_backlog_item_path(@sprint, @project, @pbi),
+              :method => :get,
+              :overlap => :horizontal,
+              :constraint => :horizontal)

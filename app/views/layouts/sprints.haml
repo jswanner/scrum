@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title= "Sprints: " + controller.action_name
+    = javascript_include_tag :defaults
+    = stylesheet_link_tag 'scaffold'
+  %body
+    %p{ :style => "color: green;"}
+      = flash[:notice]
+    = yield

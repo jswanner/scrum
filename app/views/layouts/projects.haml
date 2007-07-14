@@ -1,0 +1,13 @@
+!!! XML
+!!!
+%html
+  %head
+    %title= "Projects: " + controller.action_name
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'redbox'
+    = stylesheet_link_tag 'scrum'
+    = stylesheet_link_tag 'redbox'
+  %body
+    %p{ :style => "color: green;"}
+      = flash[:notice]
+    = yield

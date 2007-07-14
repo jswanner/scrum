@@ -1,0 +1,6 @@
+/list item for sbi
+%li[li]
+  %span.position= li.position
+  %span.title= li.title
+  .delete= link_to_remote_redbox 'x', :url => delete_sprint_backlog_item_path(sprint, project, pbi, li), :method => 'get'
+  %span.estimate= li.estimate

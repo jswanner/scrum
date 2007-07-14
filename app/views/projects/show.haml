@@ -1,0 +1,21 @@
+%h1= "Project: #{@project.title}"
+%h3{:style => 'display: inline;'}
+  = "#{@project.product_backlog_items.count} Product Backlog Items"
+
+/link to open new pbi form in modal box
+= link_to_redbox '+', 'new_pbi'
+
+/list of product backlog items
+%ol.product_backlog_items#pbis
+  = render  :partial => 'product_backlog_items/li', :collection => @project.product_backlog_items, :locals => { :sprint => @sprint, :project => @project }
+
+/form for new pbi, opens in modal box
+#new_pbi{:style => 'display: none'}
+  - remote_form_for(:product_backlog_item, :url => product_backlog_items_path(@sprint, @project), :html => { :id => 'pbi_form' } ) do |f|
+    %h1 New Product Backlog Item
+    = render :partial => "shared/form", :locals => { :f => f }
+    = submit_tag 'Create', :tabindex => 3
+    = button_to_close_redbox 'Cancel', :tabindex => 4
+
+/set the list of pbi's as sortable
+= sortable_element("pbis", :url => order_project_path(@sprint, @project), :method => :get)

@@ -1,0 +1,8 @@
+%h1= "Sprint # #{@sprint.number}"
+%h3{:style => 'display: inline'} Projects
+= link_to 'add project', new_project_path(@sprint)
+%ul#projects
+  - @sprint.projects.each do |project|
+    %li[project]
+      %strong= project.title
+      = link_to 'show', project_path(@sprint, project)
