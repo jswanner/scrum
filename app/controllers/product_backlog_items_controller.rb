@@ -1,5 +1,6 @@
 class ProductBacklogItemsController < ApplicationController
   
+  before_filter :login_required
   before_filter(:get_project)
   
   def new
@@ -32,6 +33,30 @@ class ProductBacklogItemsController < ApplicationController
     ProductBacklogItem.find(params[:id]).destroy
     @pbis = @project.product_backlog_items
     
+    @sprint = @project.sprint
+
+    respond_to do |format|
+      format.html { redirect_to product_backlog_item_url }
+      format.js
+    end
+  end
+
+  def edit
+    @product_backlog_item = ProductBacklogItem.find(params[:id])
+    @sprint = @project.sprint
+
+    respond_to do |format|
+      format.html
+      format.js { render  :partial => 'edit_remote',
+                          :locals => {  :project => @project,
+                                        :sprint => @sprint } }
+    end
+  end
+
+  def update
+    pbi = ProductBacklogItem.find(params[:id])
+    pbi.update_attributes(params[:product_backlog_item])
+    @pbis = @project.product_backlog_items
     @sprint = @project.sprint
 
     respond_to do |format|

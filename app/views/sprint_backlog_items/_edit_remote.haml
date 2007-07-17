@@ -1,0 +1,6 @@
+%h1 Edit Sprint Backlog Item
+= error_messages_for :sprint_backlog_item
+- remote_form_for(:sprint_backlog_item, :url => sprint_backlog_item_path(sprint, project, pbi), :method => :put) do |f|
+  = render :partial => "shared/form", :locals => { :f => f }
+  = submit_tag 'Update'
+  = button_to_close_redbox 'Cancel'

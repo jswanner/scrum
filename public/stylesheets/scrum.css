@@ -6,21 +6,12 @@ body {
   font-size: small; }
 
 a {
-  background-color: transparent;
-  
-  border: 1px solid #777;
-  color: #777;
-  font-size: .8em;
-  font-weight: bold;
-  
-  padding: 0 .2em .1em .2em;
+  margin: 0;
+  padding: 0;
   text-decoration: none; }
-  a:hover {
-    background-color: #999;
-    
-    border-color: #333;
-    
-    color: #333; }
+
+img {
+  border-style: none; }
 
 br.clear {
   clear: both; }
@@ -37,6 +28,7 @@ ol.product_backlog_items {
       background-color: #C4FFCE;
       
       border: 1px solid #0f0;
+      cursor: move;
       float: left;
       margin-bottom: .3em;
       
@@ -66,15 +58,16 @@ ol.product_backlog_items {
         position: relative;
         bottom: 1em; }
       ol.product_backlog_items li div div.delete {
+        background-color: transparent;
         border-style: none;
         
         float: left;
+        margin-bottom: 0;
         min-width: 0;
         
         padding: 0;
         position: relative;
-        right: .15em;
-        top: .5em; }
+        top: .4em; }
       ol.product_backlog_items li div span.estimate {
         display: block;
         padding-right: .2em;
@@ -91,6 +84,7 @@ ol.sprint_backlog_items {
     
     border: 1px solid #ff0;
     clear: none;
+    cursor: move;
     float: left;
     margin: .4em 1em;
     max-width: 16em;
@@ -99,7 +93,6 @@ ol.sprint_backlog_items {
     
     padding: .2em; }
     ol.sprint_backlog_items li span.position {
-      clear: none;
       display: block;
       color: #999;
       font-weight: bold;
@@ -112,7 +105,6 @@ ol.sprint_backlog_items {
       width: 1.5em; }
     ol.sprint_backlog_items li span.title {
       bottom: 1em;
-      clear: both;
       display: block;
       font-size: 1.1em;
       
@@ -120,17 +112,16 @@ ol.sprint_backlog_items {
       
       position: relative; }
     ol.sprint_backlog_items li div.delete {
-      background-color: #F6FFCC;
+      background-color: transparent;
       
       border-style: none;
-      
       float: left;
+      margin: 0;
       min-width: 0;
       
       padding: 0;
       position: relative;
-      right: .27em;
-      top: .7em; }
+      top: .5em; }
     ol.sprint_backlog_items li span.estimate {
       display: block;
       padding-right: .2em;

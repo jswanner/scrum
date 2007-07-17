@@ -2,5 +2,7 @@
 %li[li]
   %span.position= li.position
   %span.title= li.title
-  .delete= link_to_remote_redbox 'x', :url => delete_sprint_backlog_item_path(sprint, project, pbi, li), :method => 'get'
+  .delete
+    = link_to_remote_redbox(image_tag('yellow_delete.gif', :alt => 'Delete'), :url => delete_sprint_backlog_item_path(sprint, project, pbi, li), :method => :get)
+    = link_to_remote_redbox(image_tag('yellow_edit.gif', :alt => 'Edit'), :url => edit_sprint_backlog_item_path(sprint, project, pbi, li), :method => :get)
   %span.estimate= li.estimate

@@ -1,9 +1,10 @@
 %h1= "Project: #{@project.title}"
 %h3{:style => 'display: inline;'}
-  = "#{@project.product_backlog_items.count} Product Backlog Items"
+  %span#pbis_count= @project.product_backlog_items.count
+  Product Backlog Items
 
 /link to open new pbi form in modal box
-= link_to_redbox '+', 'new_pbi'
+= link_to_redbox(image_tag('green_add.gif', :alt => 'Add'), 'new_pbi')
 
 /list of product backlog items
 %ol.product_backlog_items#pbis

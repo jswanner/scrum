@@ -9,3 +9,5 @@ page.sortable("pbis",
               :method => :get,
               :overlap => :horizontal,
               :constraint => :horizontal)
+page.replace_html "pbis_count", @project.product_backlog_items.count
+page << "$('pbi_form').reset();"

@@ -5,7 +5,9 @@
   %div
     %span.position= li.position
     %span.title= li.title
-    .delete= link_to_remote_redbox 'x', :url => delete_product_backlog_item_path(sprint, project, li), :method => 'get', :complete => "$('delete_sbi').focus();"
+    .delete
+      = link_to_remote_redbox(image_tag('green_delete.gif', :alt => 'Delete'), :url => delete_product_backlog_item_path(sprint, project, li), :method => 'get', :complete => "$('delete_sbi').focus();")
+      = link_to_remote_redbox(image_tag('green_edit.gif', :alt => 'Edit'), :url => edit_product_backlog_item_path(sprint, project, li), :method => :get)
     %span.estimate= li.estimate
     
   /break w/ clear, so the link will appear below the pbi box
@@ -13,10 +15,11 @@
   
   /heading containing sbi count
   %h5{:style => 'display: inline;'}
-    = "#{li.sprint_backlog_items.count} Sprint Backlog Items"
+    %span{ :id => "count_for_#{li.id}" }= li.sprint_backlog_items.count
+    Sprint Backlog Items
   
   /link to add new sbi, form is retrieved by ajax and put in modal box
-  = link_to_remote_redbox '+', :url => new_sprint_backlog_item_path(sprint, project, li), :method => 'get', :success => "$('sprint_backlog_item_title').focus();"
+  = link_to_remote_redbox(image_tag('yellow_add.gif', :alt => 'Add'), :url => new_sprint_backlog_item_path(sprint, project, li), :method => 'get', :success => "$('sprint_backlog_item_title').focus();")
   
   -# only display sbi list if the pbi has sbi's
   - if li.sprint_backlog_items.count > 0

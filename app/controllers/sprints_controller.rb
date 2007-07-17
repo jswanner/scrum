@@ -1,4 +1,7 @@
 class SprintsController < ApplicationController
+  
+  before_filter :login_required
+  
   # GET /sprints
   # GET /sprints.xml
   def index
@@ -34,17 +37,16 @@ class SprintsController < ApplicationController
   # POST /sprints
   # POST /sprints.xml
   def create
-    @sprint = Sprint.new(params[:sprint])
-
+    @sprint = Sprint.create(params[:sprint])
     respond_to do |format|
-      if @sprint.save
-        flash[:notice] = 'Sprint was successfully created.'
-        format.html { redirect_to sprint_url(@sprint) }
-        format.xml  { head :created, :location => sprint_url(@sprint) }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @sprint.errors.to_xml }
-      end
+      flash[:notice] = 'Sprint was successfully created.'
+      format.html { redirect_to sprint_url(@sprint) }
+      format.xml  { head :created, :location => sprint_url(@sprint) }
+    end
+  rescue ActiveRecord::RecordInvalid
+    respond_to do |format|
+      format.html { render :action => "new" }
+      format.xml  { render :xml => @sprint.errors.to_xml }
     end
   end
 
@@ -52,16 +54,17 @@ class SprintsController < ApplicationController
   # PUT /sprints/1.xml
   def update
     @sprint = Sprint.find(params[:id])
-
+    @sprint.update_attributes(params[:sprint])
+    
     respond_to do |format|
-      if @sprint.update_attributes(params[:sprint])
         flash[:notice] = 'Sprint was successfully updated.'
         format.html { redirect_to sprint_url(@sprint) }
         format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @sprint.errors.to_xml }
-      end
+    end
+  rescue ActiveRecord::RecordInvalid  
+    respond_to do |format|
+      format.html { render :action => "edit" }
+      format.xml  { render :xml => @sprint.errors.to_xml }
     end
   end
 

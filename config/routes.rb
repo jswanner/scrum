@@ -1,12 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :sprints do |sprints|
+  map.resources :sprints, :member => { :order => :get } do |sprints|
     sprints.resources :projects, :member => { :order => :get } do |projects|
       projects.resources :product_backlog_items, :member => { :delete => :get, :order => :get } do |product_backlog_items|
         product_backlog_items.resources :sprint_backlog_items, :member => { :delete => :get }
       end
     end
   end
-
+  
+  map.resources :users
+  map.resource :session
+  
   # The priority is based upon order of creation: first created -> highest priority.
   
   # Sample of regular route:
@@ -20,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed by hooking up '' 
   # -- just remember to delete public/index.html.
   # map.connect '', :controller => "welcome"
+  map.home '', :controller => 'sprints', :action => 'index'
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'

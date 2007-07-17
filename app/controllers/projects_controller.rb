@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   
-  before_filter(:get_sprint)
+  before_filter :login_required
+  before_filter :get_sprint
   
   # GET /projects
   # GET /projects.xml

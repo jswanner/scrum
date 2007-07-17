@@ -9,4 +9,6 @@ page.sortable("sbis_for_#{@pbi.id}",
               :url => order_product_backlog_item_path(@sprint, @project, @pbi),
               :method => :get,
               :overlap => :horizontal,
-              :constraint => :horizontal)
+              :constraint => :none)
+page.replace_html "count_for_#{@pbi.id}", @pbi.sprint_backlog_items.count
+page.visual_effect :highlight, "count_for_#{@pbi.id}"
