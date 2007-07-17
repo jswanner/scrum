@@ -1,6 +1,0 @@
-%h1 New Sprint Backlog Item
-= error_messages_for :sprint_backlog_item
-- remote_form_for(:sprint_backlog_item, :url => sprint_backlog_items_path(sprint, project, pbi)) do |f|
-  = render :partial => "shared/form", :locals => { :f => f }
-  = submit_tag 'Create'
-  = button_to_close_redbox 'Cancel'
