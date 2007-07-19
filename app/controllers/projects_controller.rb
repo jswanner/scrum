@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.find(:all)
+    @projects = @sprint.projects.find(:all, :order => 'position ASC')
 
     respond_to do |format|
       format.html # index.rhtml
@@ -34,18 +34,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1;edit
   def edit
-    @project = Project.find(params[:id])
+    @project = @sprint.projects.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.xml
   def create
-    @project = @sprint.projects.new(params[:project])
+    @project = @sprint.projects.create(params[:project])
 
     respond_to do |format|
-      if @project.save
+      if @project.valid?
         flash[:notice] = 'Project was successfully created.'
-        format.html { redirect_to project_url(@project) }
+        format.html { redirect_to project_url(@sprint, @project) }
         format.xml  { head :created, :location => project_url(@project) }
       else
         format.html { render :action => "new" }
@@ -57,12 +57,12 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
-    @project = Project.find(params[:id])
+    @project = @sprint.projects.find(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
         flash[:notice] = 'Project was successfully updated.'
-        format.html { redirect_to project_url(@project) }
+        format.html { redirect_to project_url(@sprint, @project) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -74,7 +74,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
-    @project = Project.find(params[:id])
+    @project = @sprint.projects.find(params[:id])
     @project.destroy
 
     respond_to do |format|
@@ -84,16 +84,14 @@ class ProjectsController < ApplicationController
   end
   
   def order
-      @project = Project.find(params[:id])
+      @project = @sprint.projects.find(params[:id])
       order = params[:pbis]
 
       order.each_with_index do |id, position|
         ProductBacklogItem.find(id).update_attribute(:position, position + 1)
       end
 
-      @pbis = ProductBacklogItem.find(:all,
-                                      :conditions => ["project_id = ?", @project.id],
-                                      :order => "position ASC")
+      @pbis = @project.product_backlog_items.find(:all, :order => "position ASC")
   end
   
   private

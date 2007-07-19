@@ -12,13 +12,13 @@
     <td><%=h project.title %></td>
     <td><%=h project.position %></td>
     <td><%=h project.sprint_id %></td>
-    <td><%= link_to 'Show', project_path(project) %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project_path(project), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', project_path(@sprint, project) %></td>
+    <td><%= link_to 'Edit', edit_project_path(@sprint, project) %></td>
+    <td><%= link_to 'Destroy', project_path(@sprint, project), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New project', new_project_path %>
+<%= link_to 'New project', new_project_path(@sprint) %>
