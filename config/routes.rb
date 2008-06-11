@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   
-  map.resources :users
+  map.resources :users { |u| puts 'test' }
   map.resource :session
   
   # The priority is based upon order of creation: first created -> highest priority.
